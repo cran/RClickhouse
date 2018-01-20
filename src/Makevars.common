@@ -10,6 +10,7 @@ vendor/clickhouse-cpp/clickhouse/columns/array.o \
 vendor/clickhouse-cpp/clickhouse/columns/factory.o \
 vendor/clickhouse-cpp/clickhouse/columns/nullable.o \
 vendor/clickhouse-cpp/clickhouse/columns/enum.o \
+vendor/clickhouse-cpp/clickhouse/columns/uuid.o \
 vendor/clickhouse-cpp/clickhouse/query.o \
 vendor/clickhouse-cpp/clickhouse/base/platform.o \
 vendor/clickhouse-cpp/clickhouse/base/socket.o \
@@ -25,6 +26,6 @@ vendor/clickhouse-cpp/contrib/cityhash/city.o \
 vendor/clickhouse-cpp/contrib/lz4/lz4.o \
 vendor/clickhouse-cpp/contrib/lz4/lz4hc.o
 
-PKG_LIBS = -fPIC $(OBJ_FILES) -lpthread $(SYS_LIBS)
+PKG_LIBS = $(OBJ_FILES) -lpthread $(SYS_LIBS)
 
 $(SHLIB): $(OBJ_FILES)

@@ -71,7 +71,32 @@ void convertEntries<ch::ColumnDate, Rcpp::DateVector>(std::shared_ptr<const ch::
     if(nullCol && nullCol->IsNull(j)) {
       out[offset+j-start] = Rcpp::DateVector::get_na();
     } else {
-      out[offset+j-start] = in->At(j);
+      out[offset+j-start] = static_cast<int>(in->At(j)/(60*60*24));
+    }
+  }
+}
+
+std::string formatUUID(const ch::UInt128 &v) {
+  const size_t bufsize = 128/4 + 4 + 1;  // 128 bit in hexadecimal + 4 dashes + null terminator
+  char buf[bufsize];
+
+  std::snprintf(&buf[0], bufsize, "%08llx-%04llx-%04llx-%04llx-%012llx",
+      static_cast<unsigned long long>(v.first>>32),
+      (v.first>>16)&0xFFFFllu,
+      v.first&0xFFFFllu,
+      static_cast<unsigned long long>(v.second>>48),
+      v.second&0xFFFFFFFFFFFFllu);
+  return std::string(buf);
+}
+
+template<>
+void convertEntries<ch::ColumnUUID, Rcpp::StringVector>(std::shared_ptr<const ch::ColumnUUID> in,
+    NullCol nullCol, Rcpp::StringVector &out, size_t offset, size_t start, size_t end) {
+  for(size_t j = start; j < end; j++) {
+    if(nullCol && nullCol->IsNull(j)) {
+      out[offset+j-start] = Rcpp::StringVector::get_na();
+    } else {
+      out[offset+j-start] = formatUUID(in->At(j));
     }
   }
 }
@@ -103,6 +128,7 @@ class ScalarConverter : public Converter {
       convertEntries<CT,RT>(in, nullCol, out, offset, start, end);
     });
   }
+
   void processCol(ch::ColumnRef col, Rcpp::List &target, size_t targetIdx,
       NullCol nullCol) {
     auto typedCol = col->As<CT>();
@@ -126,7 +152,7 @@ public:
 
   void processCol(ch::ColumnRef col, Rcpp::List &target, size_t targetIdx, NullCol) {
     auto typedCol = col->As<CT>();
-    processCol(typedCol->Nested(), target, targetIdx, typedCol);
+    elemConverter->processCol(typedCol->Nested(), target, targetIdx, typedCol);
   }
 };
 
@@ -162,9 +188,9 @@ class EnumConverter : public Converter {
                             // level indices in the R factor to be created
 
   void genLevelMap(LevelMapT<VT> &levelMap, Rcpp::CharacterVector &levels) {
-    for (auto ei : type.GetValueToNameMap()) {
-      levels.push_back(ei.second);
-      levelMap[ei.first] = levels.size();  // note: R factor level indices start at 1
+    for (auto it = type.BeginValueToName(); it != type.EndValueToName(); it++) {
+      levels.push_back(it->second);
+      levelMap[it->first] = levels.size();  // note: R factor level indices start at 1
     }
   }
 
@@ -224,6 +250,8 @@ std::unique_ptr<Converter> Result::buildConverter(std::string name, ch::TypeRef 
       warn("column "+name+" converted from UInt64 to Numeric");
       return std::unique_ptr<ScalarConverter<ch::ColumnUInt64, Rcpp::NumericVector>>(new ScalarConverter<ch::ColumnUInt64, Rcpp::NumericVector>);
     }
+    case TC::UUID:
+      return std::unique_ptr<ScalarConverter<ch::ColumnUUID, Rcpp::StringVector>>(new ScalarConverter<ch::ColumnUUID, Rcpp::StringVector>);
     case TC::Float32:
       return std::unique_ptr<ScalarConverter<ch::ColumnFloat32, Rcpp::NumericVector>>(new ScalarConverter<ch::ColumnFloat32, Rcpp::NumericVector>);
     case TC::Float64:

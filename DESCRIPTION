@@ -2,10 +2,12 @@ Package: RClickhouse
 Type: Package
 Title: A 'DBI' Interface to the 'Yandex Clickhouse' Database Providing
         Basic 'dplyr' Support
-Version: 0.4.0
+Version: 0.5
 Encoding: UTF-8
 Authors@R: c(
     person("Christian", "Hotz-Behofsits", email = "christian.hotz-behofsits@wu.ac.at", role = c("aut", "cre")),
+    person("Peter", "Knaus", email = "peter.knaus@wu.ac.at", role = c("aut")),
+    person("Daniel", "Winkler", email = "daniel.winkler@wu.ac.at", role = c("aut")),
     person("Clemens", "Danninger", email="cran@b8000h.org", role = c("aut")),
     person("Simon", "Stiebellehner", email="simon.stiebellehner@gmail.com", role = c("aut")),
     person("Dan", "Egnor", role = c("aut")),
@@ -13,6 +15,7 @@ Authors@R: c(
     person("Keith", "Ray", email = "keith.ray@gmail.com", role = c("aut")),
     person("Zhanyong", "Wan", email = "wan@google.com", role = c("aut")),
     person("Markus", "Heule", email = "mheule@google.com", role = c("aut")),
+    person("Oliver", "Flasch", email = "oflasch@gmail.com", role = c("aut")),
     person(family = "Google", role = c("cph")),
     person("Yann", "Collet", role = c("cph"))
     )
@@ -23,9 +26,9 @@ Description: 'Yandex Clickhouse' (<https://clickhouse.yandex/>) is a high-perfor
 License: GPL-2
 SystemRequirements: C++11
 Imports: dplyr (>= 0.7.0), dbplyr (>= 1.0.0), methods (>= 3.3.2), DBI
-        (>= 0.6.0), Rcpp (>= 0.11.0), yaml (>= 2.1.14)
+        (>= 0.6.0), Rcpp (>= 0.11.0), yaml (>= 2.1.14), bit64
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 7.0.1
 NeedsCompilation: yes
 Depends: R (>= 3.3)
 Suggests: testthat
@@ -35,8 +38,10 @@ Collate: 'RcppExports.R' 'RClickhouse.R' 'ClickhouseDriver.R'
 URL: https://github.com/IMSMWU/RClickhouse
 BugReports: https://github.com/IMSMWU/RClickhouse/issues
 LinkingTo: Rcpp
-Packaged: 2018-01-20 14:02:41 UTC; chris
+Packaged: 2020-01-29 03:12:50 UTC; chris
 Author: Christian Hotz-Behofsits [aut, cre],
+  Peter Knaus [aut],
+  Daniel Winkler [aut],
   Clemens Danninger [aut],
   Simon Stiebellehner [aut],
   Dan Egnor [aut],
@@ -44,8 +49,9 @@ Author: Christian Hotz-Behofsits [aut, cre],
   Keith Ray [aut],
   Zhanyong Wan [aut],
   Markus Heule [aut],
+  Oliver Flasch [aut],
   Google [cph],
   Yann Collet [cph]
 Maintainer: Christian Hotz-Behofsits <christian.hotz-behofsits@wu.ac.at>
 Repository: CRAN
-Date/Publication: 2018-01-20 14:17:37 UTC
+Date/Publication: 2020-01-29 10:30:02 UTC

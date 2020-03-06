@@ -70,20 +70,56 @@ checkParameters <- function(add_params, comp_params) {
   return(diff_params)
 }
 
+# helper-function for config-parser
+removequotes <- function(parsedline) {
+  if (grepl('^["](.*["])?$', parsedline)) {
+    return(gsub('^["](.*["])?$', substr(parsedline, 2, nchar(parsedline) -1), parsedline))
+  } else if (grepl("^['](.*['])?$", parsedline)) {
+    return(gsub("^['](.*['])?$", substr(parsedline, 2, nchar(parsedline) -1), parsedline))
+  }
+  return(parsedline)
+}
+
+configparser <- function(filepath) {
+  con <- file(filepath, "r")
+  parsedConfig <- list()
+  while ( TRUE ) {
+    line <- readLines(con, n <- 1)
+    if ( length(line) == 0 ) {
+      break
+    } else if ( nchar(line) == 0 ) {
+      next
+    }
+    splitUp <- strsplit(line, ":", fixed = TRUE)
+    unlistedLine <- unlist(splitUp)
+    key <- removequotes(trimws(unlistedLine[1]))
+    value <- removequotes(trimws(paste(unlistedLine[-1], collapse=":")))
+    if ('true' == value || 'TRUE' == value) {
+      value <- TRUE
+    }else if ('false' == value || 'FALSE' == value) {
+      value <- FALSE
+    }else if (!is.na(strtoi(value))) {
+      value <- strtoi(value)
+    }
+    parsedConfig[[key]] <- value
+  }
+  close(con)
+  return(parsedConfig)
+}
+
 #' @rdname ClickhouseDriver-class
 #' @export
 #' @param CONFIG_PATHS a list of configuration paths
 #' @param DEFAULT_PARAMS a list of configuration defaults
 #' @param pre_config initialization set
 #' @return a merged configuration
-#' @importFrom yaml read_yaml
 loadConfig <- function(CONFIG_PATHS, DEFAULT_PARAMS, pre_config) {
   config = pre_config
   config_found <- FALSE
 
   for (path in CONFIG_PATHS) {
     if (file.exists(path) == TRUE) {
-      config_temp <- yaml::read_yaml(path)
+      config_temp <- configparser(path)
       config <- complementList(config, config_temp)
       config_found <- TRUE
     }

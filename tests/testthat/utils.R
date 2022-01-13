@@ -9,6 +9,8 @@
 tblname    %||=% "test"
 
 getRealConnection <- function(){
+  skip_on_cran()
+  
   # set variables if not set yet
   serveraddr %||=% "localhost"
   user       %||=% "default"
@@ -29,11 +31,24 @@ simulate_clickhouse <- function(type = NULL) {
 }
 
 writeReadTest <- function(input, result = input, types = NULL) {
-  skip_on_cran()
   conn <- getRealConnection()
 
   dbWriteTable(conn, tblname, input, overwrite=T, field.types=types)
-  r <- dbReadTable(conn, tblname)
-  expect_equal(r, result)
+  afterReadWrite <- dbReadTable(conn, tblname)
+
+  #  checks consistency of dataTypes before and after ReadWrite
+  if(!is.null(types)){
+    afterReadWriteType <- attr(afterReadWrite, "data.type")
+    resultType <- types
+    expect_equal(resultType, afterReadWriteType)
+  }
+
+  #  checks consistency of data before and after ReadWrite
+  attr(afterReadWrite, "data.type") <- NULL
+  attr(result, "data.type") <- NULL
+  names(result) <- sapply(names(result),RClickhouse:::escapeForInternalUse,forsql=FALSE)
+  expect_equal(afterReadWrite, result)
+
+  RClickhouse::dbRemoveTable(conn,tblname)
   dbDisconnect(conn)
 }

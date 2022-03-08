@@ -1,6 +1,5 @@
 context("aggregation")
 # at suppresses warning pertaining to window function until fixed
-options(warn=-1)
 
 library(DBI, warn.conflicts=F)
 library(dplyr, warn.conflicts=F)

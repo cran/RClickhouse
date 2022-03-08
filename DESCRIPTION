@@ -1,8 +1,7 @@
 Package: RClickhouse
 Type: Package
-Title: A 'DBI' Interface to the 'Yandex Clickhouse' Database Providing
-        Basic 'dplyr' Support
-Version: 0.6.0
+Title: 'Yandex Clickhouse' Interface for R with Basic 'dplyr' Support
+Version: 0.6.3
 Encoding: UTF-8
 Authors@R: c(
     person("Christian", "Hotz-Behofsits", email = "christian.hotz-behofsits@wu.ac.at", role = c("aut", "cre")),
@@ -18,7 +17,7 @@ Authors@R: c(
     person("Markus", "Heule", email = "mheule@google.com", role = c("aut")),
     person("Oliver", "Flasch", email = "oflasch@gmail.com", role = c("aut")),
     person(family = "Google", role = c("cph")),
-    person("Yann", "Collet", role = c("cph"))
+    person("Yann", "Collet", role = c("cph", "aut"), comment = "Yann Collet is the author and copyright holder of 'lz4'")
     )
 Description: 'Yandex Clickhouse' (<https://clickhouse.com/>) is a high-performance relational column-store database to enable
     big data exploration and 'analytics' scaling to petabytes of data. Methods are
@@ -28,7 +27,7 @@ License: GPL-2
 SystemRequirements: C++11
 Imports: dplyr (>= 0.7.0), dbplyr (>= 1.0.0), methods (>= 3.3.2), DBI
         (>= 0.6.0), Rcpp (>= 0.11.0), bit64
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 NeedsCompilation: yes
 Depends: R (>= 3.3)
 Suggests: testthat
@@ -38,7 +37,7 @@ Collate: 'RcppExports.R' 'RClickhouse.R' 'ClickhouseDriver.R'
 URL: https://github.com/IMSMWU/RClickhouse
 BugReports: https://github.com/IMSMWU/RClickhouse/issues
 LinkingTo: Rcpp
-Packaged: 2022-01-13 10:48:40 UTC; jovyan
+Packaged: 2022-03-03 20:04:02 UTC; jovyan
 Author: Christian Hotz-Behofsits [aut, cre],
   Daniel Winkler [aut],
   Luca Rauchenberger [aut],
@@ -52,7 +51,8 @@ Author: Christian Hotz-Behofsits [aut, cre],
   Markus Heule [aut],
   Oliver Flasch [aut],
   Google [cph],
-  Yann Collet [cph]
+  Yann Collet [cph, aut] (Yann Collet is the author and copyright holder
+    of 'lz4')
 Maintainer: Christian Hotz-Behofsits <christian.hotz-behofsits@wu.ac.at>
 Repository: CRAN
-Date/Publication: 2022-01-13 12:12:43 UTC
+Date/Publication: 2022-03-08 13:40:08 UTC

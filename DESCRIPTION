@@ -1,7 +1,7 @@
 Package: RClickhouse
 Type: Package
 Title: 'Yandex Clickhouse' Interface for R with Basic 'dplyr' Support
-Version: 0.6.7
+Version: 0.6.8
 Encoding: UTF-8
 Authors@R: c(
     person("Christian", "Hotz-Behofsits", email = "christian.hotz-behofsits@wu.ac.at", role = c("aut", "cre")),
@@ -37,7 +37,7 @@ Collate: 'RcppExports.R' 'RClickhouse.R' 'ClickhouseDriver.R'
 URL: https://github.com/IMSMWU/RClickhouse
 BugReports: https://github.com/IMSMWU/RClickhouse/issues
 LinkingTo: Rcpp
-Packaged: 2023-04-02 15:50:50 UTC; chris
+Packaged: 2023-08-21 13:31:23 UTC; chris-office
 Author: Christian Hotz-Behofsits [aut, cre],
   Daniel Winkler [aut],
   Luca Rauchenberger [aut],
@@ -56,4 +56,4 @@ Author: Christian Hotz-Behofsits [aut, cre],
     of 'lz4')
 Maintainer: Christian Hotz-Behofsits <christian.hotz-behofsits@wu.ac.at>
 Repository: CRAN
-Date/Publication: 2023-04-02 16:20:02 UTC
+Date/Publication: 2023-08-21 14:20:11 UTC

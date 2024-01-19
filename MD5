@@ -1,4 +1,4 @@
-e6a6505441616700007cbb318cb0253d *DESCRIPTION
+b1c71c93c89f0bcd5876b85e1f6a4b62 *DESCRIPTION
 a94c18c44d09de8197e002a7b7a037b6 *NAMESPACE
 bc19bd61bfd6fc8a6db963e1910baeb0 *R/ClickhouseConnection.R
 ff3197d75474c6a6731579c96a781ca7 *R/ClickhouseDriver.R
@@ -22,7 +22,7 @@ d92af105d9449b1d131a998635a022d9 *src/Makevars
 f2a4148b533055acaafdcd2c2d02f1b3 *src/Makevars.common
 1fadcf788b647d181f58613a9b452319 *src/Makevars.win
 0fafc018d8cdfe00d788fe6cbdd80930 *src/RClickhouse_init.c
-d977ccbd357c78c06fff05d27f940c99 *src/RcppExports.cpp
+ca9701bf6c5c38d31c03e0d094a93b62 *src/RcppExports.cpp
 ffda4a1b54900139aaa23bfac5960656 *src/connection.cpp
 fb656c21c5000c876707ce69a6c7c978 *src/result.cpp
 82b434f1f9a547c6a762036ef84bf671 *src/result.h

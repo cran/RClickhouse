@@ -29,11 +29,6 @@
 
 \S4method{dbColumnInfo}{ClickhouseResult}(res, ...)
 }
-\arguments{
-\item{res}{An object inheriting from \linkS4class{DBIResult}.}
-
-\item{...}{Other arguments passed on to methods.}
-}
 \description{
 Clickhouse's query results class.  This classes encapsulates the result of an SQL
 statement (either \code{select} or not).

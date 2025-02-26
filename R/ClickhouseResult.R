@@ -78,7 +78,6 @@ setMethod("dbHasCompleted", "ClickhouseResult", definition = function(res, ...) 
 })
 
 #' @rdname ClickhouseResult-class
-#' @inheritParams DBI::dbGetStatement
 #' @export
 setMethod("dbGetStatement", "ClickhouseResult", function(res, ...) {
   getStatement(res@ptr)
@@ -91,7 +90,6 @@ setMethod("dbIsValid", "ClickhouseResult", function(dbObj, ...) {
 })
 
 #' @rdname ClickhouseResult-class
-#' @inheritParams DBI::dbGetRowCount
 #' @export
 setMethod("dbGetRowCount", "ClickhouseResult", function(res, ...) {
   getRowCount(res@ptr)

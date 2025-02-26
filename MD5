@@ -1,9 +1,9 @@
-b1c71c93c89f0bcd5876b85e1f6a4b62 *DESCRIPTION
+d06e76126e7858db8385fd2fe66a1b1b *DESCRIPTION
 a94c18c44d09de8197e002a7b7a037b6 *NAMESPACE
 bc19bd61bfd6fc8a6db963e1910baeb0 *R/ClickhouseConnection.R
 ff3197d75474c6a6731579c96a781ca7 *R/ClickhouseDriver.R
-4471310327bf2ce8d84907903ee736b6 *R/ClickhouseResult.R
-c022d0fce7b936834d5105286ebd0511 *R/RClickhouse.R
+e88e6abd3170d36f7fc52d90d5af3ca0 *R/ClickhouseResult.R
+b37aa44f1e95fc099590483de20afdd1 *R/RClickhouse.R
 860c1c53ba290d6a2f7bb8ad358350ec *R/RcppExports.R
 3f1c79f621c4e3c80689fd4088ee1e39 *R/dbplyr-helpers.R
 d37a01b5de63c69adfd92fd708ffcf9b *R/dplyr.R
@@ -12,9 +12,9 @@ e6f2846827c2522da3a46cccabcd44a1 *R/zzz.R
 54b5e3165e404de8448ce7bf11f41c8c *inst/include/RClickhouse.h
 5e3fbf0c168a5d101b80ee934daf5d69 *inst/include/RClickhouse_RcppExports.h
 d6afdea7e9b047172e59566b58f1c49f *man/ClickhouseConnection-class.Rd
-fa5fa787676bcaffd2823e0f55c40052 *man/ClickhouseDriver-class.Rd
-4942fbfd11b7a30ec399058ff24f9004 *man/ClickhouseResult-class.Rd
-384faa3df9a5133f88cb5a1a94674729 *man/RClickhouse.Rd
+f3a8d1354976242f0b5d83a702f5b84b *man/ClickhouseDriver-class.Rd
+bf045b7513246f8740bf60d311e7c385 *man/ClickhouseResult-class.Rd
+ee36f771d438c7c10f5d92367abb8b9c *man/RClickhouse.Rd
 cab912a768f6c55d053c1c1a3a4f2181 *man/dbplyr_case_sensitive.Rd
 173a5c18fff9111b6ea681845efe5525 *man/fix_dbplyr.Rd
 cd03b63a81d705a1919eba9b9830f555 *man/sql_variant.Rd
@@ -23,9 +23,9 @@ f2a4148b533055acaafdcd2c2d02f1b3 *src/Makevars.common
 1fadcf788b647d181f58613a9b452319 *src/Makevars.win
 0fafc018d8cdfe00d788fe6cbdd80930 *src/RClickhouse_init.c
 ca9701bf6c5c38d31c03e0d094a93b62 *src/RcppExports.cpp
-ffda4a1b54900139aaa23bfac5960656 *src/connection.cpp
+640bedffbab869fd7e73bffc438b2e64 *src/connection.cpp
 fb656c21c5000c876707ce69a6c7c978 *src/result.cpp
-82b434f1f9a547c6a762036ef84bf671 *src/result.h
+784a8e59feea999c5f06e42cc94b1316 *src/result.h
 a5c758d70be4e46bcb34787621a4ce68 *src/vendor/clickhouse-cpp/BUCK
 43d75f40cca793edc38f58e978efa4b2 *src/vendor/clickhouse-cpp/CMakeLists.txt
 9687b270cdc0162d373b135d56892f60 *src/vendor/clickhouse-cpp/LICENSE
@@ -89,7 +89,7 @@ ce96f0e51e6f6373fdde1b7701c248c4 *src/vendor/clickhouse-cpp/clickhouse/exception
 69f16b9fb94bdf26b59fccb628b6f4bf *src/vendor/clickhouse-cpp/clickhouse/types/type_parser.cpp
 6dcd90df779261080ae4455e81115033 *src/vendor/clickhouse-cpp/clickhouse/types/type_parser.h
 55754cb559631370aef0cb3ba2ef4825 *src/vendor/clickhouse-cpp/clickhouse/types/types.cpp
-6b84f68f30919b2a6a678536eaeef320 *src/vendor/clickhouse-cpp/clickhouse/types/types.h
+9b6bbb57681061c560769dddd7f5e067 *src/vendor/clickhouse-cpp/clickhouse/types/types.h
 3df93a883f3e7d2b934510df48d587d9 *src/vendor/clickhouse-cpp/cmake/cpp11.cmake
 ad9b36b8560bfc5f0fe011c036523d67 *src/vendor/clickhouse-cpp/cmake/subdirs.cmake
 01e10af79f532664c294edaff44710b8 *src/vendor/clickhouse-cpp/contrib/bigerint/BigInt.hpp
